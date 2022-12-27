@@ -14,4 +14,5 @@ public abstract class AbstractController {
     public void setSf(ServiceFriendship sf) {
         this.sf = sf;
     }
+
 }

@@ -20,15 +20,16 @@
             </Text>
             <HBox spacing="20.0">
                <children>
-                  <TextField promptText="NUME" />
-                  <TextField promptText="VARSTA" />
+                  <TextField fx:id="nume" promptText="NUME" />
+                  <TextField fx:id="varsta" promptText="VARSTA" />
                </children>
             </HBox>
-            <PasswordField promptText="PAROLA" />
-            <PasswordField promptText="CONFIRMARE PAROLA" />
+            <PasswordField fx:id="parola" promptText="PAROLA" />
+            <PasswordField fx:id="confirmare" promptText="CONFIRMARE PAROLA" />
+            <Text fx:id="rezultat" strokeType="OUTSIDE" strokeWidth="0.0" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" text="CREARE CONT" />
+                  <Button mnemonicParsing="false" onAction="#createAccount" text="CREARE CONT" />
                   <Button mnemonicParsing="false" onAction="#changeToLogIn" text="AI DEJA CONT?" />
                </children>
             </HBox>

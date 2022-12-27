@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.lab.controller.MainMenuController">
+   <children>
+      <HBox layoutX="48.0" layoutY="237.0" spacing="40.0" />
+      <Button layoutX="514.0" layoutY="360.0" mnemonicParsing="false" onAction="#logOut" text="LOG OUT" />
+      <Text fx:id="utilizator" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hei" wrappingWidth="330.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <VBox layoutX="221.0" layoutY="118.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" text="PRIETENI">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" text="TOTI UTILIZATORII">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" text="CERERI PRIETENIE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

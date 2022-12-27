@@ -18,11 +18,12 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <TextField promptText="NUME" />
-            <PasswordField promptText="PAROLA" />
+            <TextField fx:id="nume" promptText="NUME" />
+            <PasswordField fx:id="parola" promptText="PAROLA" />
+            <Text fx:id="rezultat" strokeType="OUTSIDE" strokeWidth="0.0" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" text="AUTENTIFICA-TE" />
+                  <Button mnemonicParsing="false" onAction="#logIn" text="AUTENTIFICA-TE" />
                   <Button mnemonicParsing="false" onAction="#changeToRegister" text="NU AI CONT?" />
                </children>
             </HBox>

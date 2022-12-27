@@ -6,16 +6,27 @@ import lab.lab.domain.User;
 import lab.lab.repo.RepoGeneric;
 import lab.lab.repo.RepoMemory;
 
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class ServiceUser {
-    RepoGeneric<User> repoUser ;
-    ServiceFriendship sf;
+    private RepoGeneric<User> repoUser ;
+    private ServiceFriendship sf;
 
-    public ServiceUser(RepoGeneric<User> repoUser,ServiceFriendship sf) {
+    private User userCurent= null;
+
+    public User getUserCurent() {
+        return userCurent;
+    }
+
+    public void setUserCurent(User userCurent) {
+        this.userCurent = userCurent;
+    }
+
+    public ServiceUser(RepoGeneric<User> repoUser, ServiceFriendship sf) {
         this.repoUser = repoUser;
         this.sf = sf;
     }
@@ -53,5 +64,6 @@ public class ServiceUser {
 
     public Collection<String> getAllFriends(int idUser){
         return sf.getAllFriends(idUser);
+
     }
 }
