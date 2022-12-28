@@ -23,8 +23,8 @@ public class Friendship extends Entity{
     }
 
     public Friendship(int idUser1, int idUser2, LocalDate dataPrietenie, StatusFriendship status) {
-        this.idUser1 = Math.min(idUser1,idUser2);
-        this.idUser2= Math.max(idUser1,idUser2);
+        this.idUser1 = idUser1;
+        this.idUser2= idUser2;
         if (dataPrietenie == null)
             this.dataPrietenie = LocalDate.now();
         else this.dataPrietenie = dataPrietenie;

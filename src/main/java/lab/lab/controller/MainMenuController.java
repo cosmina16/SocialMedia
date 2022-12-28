@@ -21,4 +21,18 @@ public class MainMenuController extends AbstractController{
     public void logOut() throws IOException {
         App.changeRoot("autentificare");
     }
+    @FXML
+    public void changeToPrieteni() throws IOException {
+        App.changeRoot("prieteni");
+    }
+
+    @FXML
+    public void changeToCereri() throws IOException {
+        App.changeRoot("cereri");
+    }
+
+    @FXML
+    public void changeToAllUsers() throws IOException {
+        App.changeRoot("toti_utilizatorii");
+    }
 }

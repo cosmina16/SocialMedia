@@ -18,13 +18,13 @@ public class ServiceFriendship  {
         this.su = su;
     }
 
-    void sendRequest(int idUser1,int idUser2){
-        this.friendshipRepoGeneric.create(new Friendship(idUser1, idUser2, LocalDate.now(), StatusFriendship.Pending));
+    public void sendRequest(int sendingUser,int receivingUser){
+        this.friendshipRepoGeneric.create(new Friendship(sendingUser, receivingUser, LocalDate.now(), StatusFriendship.Pending));
     }
 
-    void acceptRequest(int idUser1,int idUser2){
+    public void acceptRequest(int receivingUser,int sendingUser){
         for(Friendship fr:this.friendshipRepoGeneric.getAll())
-            if(fr.getIdUser1() == Math.min(idUser1, idUser2) &&  fr.getIdUser2() == Math.max(idUser1, idUser2)) {
+            if(fr.getIdUser1() == sendingUser &&  fr.getIdUser2() == receivingUser){
                 fr.setStatus(StatusFriendship.Active);
                 fr.setData(LocalDate.now());
                 friendshipRepoGeneric.update(fr.getId(),fr);
@@ -32,26 +32,26 @@ public class ServiceFriendship  {
             }
     }
 
-    void declineRequst(int idUser1,int idUser2){
+    public void declineRequst(int receivingUser,int sendingUser){
         for(Friendship fr:this.friendshipRepoGeneric.getAll())
-            if(fr.getIdUser1() == Math.min(idUser1,idUser2) && fr.getIdUser2() == Math.max(idUser1,idUser2)){
+            if(fr.getIdUser1() == sendingUser &&  fr.getIdUser2() == receivingUser){
                 fr.setStatus(StatusFriendship.Blocked);
                 friendshipRepoGeneric.update(fr.getId(),fr);
                 return;
             }
     }
 
-    Collection<Friendship> getAllFriendships(){
+    public Collection<Friendship> getAllFriendships(){
         return friendshipRepoGeneric.getAll();
     }
 
-    void deleteFriendshipByID(int idFriendship){
+    public void deleteFriendshipByID(int idFriendship){
         friendshipRepoGeneric.delete(idFriendship);
     }
 
-    void deleteFriendship(int idUser1,int idUser2){
+    public void deleteFriendship(int idUser1,int idUser2){
         for(Friendship fr:friendshipRepoGeneric.getAll()){
-            if(fr.getIdUser1() == Math.min(idUser1,idUser2) && fr.getIdUser2() == Math.max(idUser1,idUser2) )
+            if(Math.min(fr.getIdUser1(), fr.getIdUser2()) == Math.min(idUser1,idUser2) && Math.max(fr.getIdUser1(), fr.getIdUser2()) == Math.max(idUser1,idUser2) )
             {
                 friendshipRepoGeneric.delete(fr.getId());
                 return;
@@ -59,16 +59,18 @@ public class ServiceFriendship  {
         }
     }
 
-    Collection<String> getAllFriends(int idUser){
+    public Collection<String> getAllFriends(int idUser){
         ArrayList<String> listaPrieteni = new ArrayList<>();
         for (Friendship friendship:friendshipRepoGeneric.getAll()){
+            if(!friendship.getStatus().equals(StatusFriendship.Active))
+                continue;
 
             if (friendship.getIdUser1() == idUser)
             {
                 User u = su.getUser(friendship.getIdUser2());
                 listaPrieteni.add(u.getName());
             }
-            if (friendship.getIdUser2() == idUser)
+            else if (friendship.getIdUser2() == idUser)
             {
                 User u = su.getUser(friendship.getIdUser1());
                 listaPrieteni.add(u.getName());
@@ -76,4 +78,14 @@ public class ServiceFriendship  {
         }
         return listaPrieteni;
     }
+
+    public Friendship getFriendship(int id1,int id2) {
+        for (Friendship fr : friendshipRepoGeneric.getAll()) {
+            if (Math.min(fr.getIdUser1(), fr.getIdUser2()) == Math.min(id1, id2) && Math.max(fr.getIdUser1(), fr.getIdUser2()) == Math.max(id1, id2)) {
+                return fr;
+            }
+        }
+        return null;
+    }
+
 }

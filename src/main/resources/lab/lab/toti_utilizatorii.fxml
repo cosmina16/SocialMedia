@@ -5,12 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.lab.controller.AllUsersController">
    <children>
-      <TableView layoutX="116.0" layoutY="49.0" prefHeight="279.0" prefWidth="317.0" />
-      <Button layoutX="532.0" layoutY="360.0" mnemonicParsing="false" text="Button" />
-      <TextField layoutX="194.0" layoutY="14.0" />
-      <Button disable="true" layoutX="388.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+      <TableView fx:id="tabel" layoutX="116.0" layoutY="49.0" onMouseClicked="#updateButton" prefHeight="279.0" prefWidth="317.0" />
+      <Button fx:id="back" layoutX="532.0" layoutY="360.0" mnemonicParsing="false" onAction="#backToMainMenu" text="Back" />
+      <TextField fx:id="cautare" layoutX="194.0" layoutY="14.0" onAction="#updateTable" />
+      <Button fx:id="trimitereCerere" disable="true" layoutX="388.0" layoutY="14.0" mnemonicParsing="false" text="Trimite cerere" />
    </children>
 </AnchorPane>
