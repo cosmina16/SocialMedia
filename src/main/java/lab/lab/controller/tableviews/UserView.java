@@ -4,11 +4,22 @@ public class UserView {
     private String nume;
     private int age;
     private String status;
+    private int id;
 
-    public UserView(String nume, int age, String status) {
+
+    public UserView(String nume, int age, String status, int id) {
         this.nume = nume;
         this.age = age;
         this.status = status;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNume() {

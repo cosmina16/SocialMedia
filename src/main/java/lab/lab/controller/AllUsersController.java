@@ -42,10 +42,13 @@ public class AllUsersController extends AbstractController{
     @FXML
     private void updateTable(){
         ArrayList<UserView> list = new ArrayList<>();
-        for (User u: su.getAllUsers())
-        {
+        for (User u: su.getAllUsers()) {
+            if (su.getUserCurent().getId() == u.getId())
+                continue;
+            if (!u.getName().toLowerCase().contains(cautare.getText().toLowerCase()))
+                continue;
             //prieteni , blocat, in asteptare, neprieteni
-            Friendship f = sf.getFriendship(u.getId(),su.getUserCurent().getId());
+            Friendship f = sf.getFriendship(u.getId(), su.getUserCurent().getId());
             String status;
             if (f == null)
                 status = "neprieteni";
@@ -55,7 +58,7 @@ public class AllUsersController extends AbstractController{
                 status = "in asteptare";
             else
                 status = "blocat";
-            UserView uv = new UserView(u.getName(),u.getAge(),status);
+            UserView uv = new UserView(u.getName(), u.getAge(), status, u.getId());
             list.add(uv);
         }
         tabel.getItems().setAll(list);
@@ -69,9 +72,19 @@ public class AllUsersController extends AbstractController{
     @FXML
     private void updateButton(){
         UserView uv = tabel.getSelectionModel().getSelectedItem();
-        if (uv != null )
+
+        if (uv != null && uv.getStatus().equals("neprieteni"))
             trimitereCerere.setDisable(false);
         else
             trimitereCerere.setDisable(true);
     }
+@FXML
+    private void sendRequest(){
+        UserView uv = tabel.getSelectionModel().getSelectedItem();
+        sf.sendRequest(su.getUserCurent().getId(), uv.getId());
+        updateTable();
+        updateButton();
+
+    }
+
 }

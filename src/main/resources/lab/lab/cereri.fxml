@@ -4,14 +4,40 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.lab.controller.CereriController">
    <children>
-      <TableView layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="368.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="437.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
-      <TextField layoutX="174.0" layoutY="58.0" />
-      <Button fx:id="back" layoutX="531.0" layoutY="361.0" mnemonicParsing="false" onAction="#backToMainMenu" text="Button" />
+      <Button fx:id="back" layoutX="531.0" layoutY="361.0" mnemonicParsing="false" onAction="#backToMainMenu" text="back" />
+      <VBox layoutX="72.0" layoutY="24.0" prefHeight="355.0" prefWidth="458.0" spacing="20.0">
+         <children>
+            <TextField fx:id="cautare" onKeyTyped="#updateTables" promptText="cautare" />
+            <HBox prefHeight="308.0" prefWidth="458.0" spacing="20.0">
+               <children>
+                  <VBox prefHeight="308.0" prefWidth="231.0" spacing="20.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cereri trimise" />
+                        <Button mnemonicParsing="false" text="anulare cerere" />
+                        <TableView fx:id="tabelTrimise" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="308.0" prefWidth="235.0" spacing="20.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cereri primite" />
+                        <HBox spacing="20.0">
+                           <children>
+                              <Button mnemonicParsing="false" text="accept" />
+                              <Button mnemonicParsing="false" text="blocare" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tabelPrimite" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
