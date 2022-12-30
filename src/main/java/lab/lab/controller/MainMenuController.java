@@ -11,9 +11,12 @@ public class MainMenuController extends AbstractController{
     @FXML
     private Text utilizator;
 
+    //prima oara se cheama constructorul
+    //dupa se leaga chestiile din cod marcate cu @FXML de fisierul ".fxml"
+    //se cheama functia initialize
+    //dupa se seteaza service-urile
     @Override
-    public void setSu(ServiceUser su) {
-        super.setSu(su);
+    public void myinitialize() {
         utilizator.setText("LOGAT CA "+su.getUserCurent().getName());
     }
 

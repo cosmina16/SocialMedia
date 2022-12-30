@@ -22,6 +22,14 @@ public class CereriController extends AbstractController{
     private TableView<User> tabelTrimise;
     @FXML
     private TableView<User> tabelPrimite;
+
+    @FXML
+    private Button anulare;
+    @FXML
+    private Button accept;
+    @FXML
+    private Button blocare;
+
     @FXML
     private void backToMainMenu() throws IOException {
         App.changeRoot("meniu_principal");
@@ -48,6 +56,12 @@ public class CereriController extends AbstractController{
         tabelTrimise.getColumns().addAll(nume1, age1);
     }
 
+    @Override
+    public void myinitialize() {
+        super.myinitialize();
+        updateTables();
+    }
+
     @FXML
     private void updateTables(){
         ArrayList<User> primite = new ArrayList<>();
@@ -69,6 +83,61 @@ public class CereriController extends AbstractController{
         }
         tabelPrimite.getItems().setAll(primite);
         tabelTrimise.getItems().setAll(trimise);
+
+        updateButtons();
     }
+
+    @FXML
+    private void updateButtons(){
+        updateBlock();
+        updateAccept();
+        updateAnulare();
+    }
+
+    private void updateAnulare(){
+        User u = tabelTrimise.getSelectionModel().getSelectedItem();
+        if(u == null)
+            anulare.setDisable(true);
+        else
+            anulare.setDisable(false);
+    }
+
+    private void updateAccept(){
+        User u = tabelPrimite.getSelectionModel().getSelectedItem();
+        if(u == null)
+            accept.setDisable(true);
+        else
+            accept.setDisable(false);
+    }
+
+    private void updateBlock(){
+        User u = tabelPrimite.getSelectionModel().getSelectedItem();
+        if(u == null)
+            blocare.setDisable(true);
+        else
+            blocare.setDisable(false);
+    }
+    @FXML
+    private void acceptRequest() {
+        int u = tabelPrimite.getSelectionModel().getSelectedItem().getId();
+        sf.acceptRequest(su.getUserCurent().getId(), u);
+        updateTables();
+    }
+
+    @FXML
+    private void blockRequest() {
+        int u = tabelPrimite.getSelectionModel().getSelectedItem().getId();
+        sf.declineRequst(su.getUserCurent().getId(), u);
+        updateTables();
+    }
+
+    @FXML
+    private void anulareRequest() {
+        int u = tabelTrimise.getSelectionModel().getSelectedItem().getId();
+        sf.deleteFriendship(su.getUserCurent().getId(), u);
+        updateTables();
+    }
+
+
 }
 

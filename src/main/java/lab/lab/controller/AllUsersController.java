@@ -64,6 +64,11 @@ public class AllUsersController extends AbstractController{
         tabel.getItems().setAll(list);
     }
 
+    @Override
+    public void myinitialize() {
+        super.myinitialize();
+        updateTable();
+    }
     @FXML
     private void backToMainMenu() throws IOException {
         App.changeRoot("meniu_principal");

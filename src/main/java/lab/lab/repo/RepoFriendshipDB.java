@@ -40,6 +40,7 @@ public class RepoFriendshipDB extends RepoDBAbstract<Friendship>{
             ps.setInt(2, e.getIdUser2());
             ps.setDate(3, java.sql.Date.valueOf(e.getData()));
             ps.setString(4, e.getStatus().name());
+            ps.setInt(5,id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -95,7 +96,7 @@ public class RepoFriendshipDB extends RepoDBAbstract<Friendship>{
 
     @Override
     public void delete(int id) {
-        String sql ="DELETE FROM friendship WHERE id = ?";
+        String sql ="DELETE FROM friendships WHERE id = ?";
         try(Connection connection = DriverManager.getConnection(url,username,password);
             PreparedStatement ps = connection.prepareStatement(sql);) {
             ps.setInt(1,id);

@@ -4,14 +4,22 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.lab.controller.PrieteniController">
    <children>
-      <TableView layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="368.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
-      <Button layoutX="437.0" layoutY="57.0" mnemonicParsing="false" text="Button" />
-      <TextField layoutX="174.0" layoutY="58.0" />
-      <Button fx:id="back" layoutX="531.0" layoutY="361.0" mnemonicParsing="false" onAction="#backToMainMenu" text="Button" />
+      <VBox layoutX="83.0" layoutY="100.0" prefHeight="200.0" prefWidth="434.0" spacing="20.0">
+         <children>
+            <HBox spacing="20.0">
+               <children>
+                  <TextField fx:id="cautare" onKeyTyped="#updateTable" />
+                  <Button fx:id="stergere" mnemonicParsing="false" onAction="#deleteFr" text="Stergere" />
+               </children>
+            </HBox>
+            <TableView fx:id="tabelPrieteni" onMouseClicked="#updateButton" prefHeight="154.0" prefWidth="411.0" />
+         </children>
+      </VBox>
+      <Button fx:id="back" layoutX="531.0" layoutY="361.0" mnemonicParsing="false" onAction="#backToMainMenu" text="Back" />
    </children>
 </AnchorPane>

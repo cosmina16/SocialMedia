@@ -19,8 +19,8 @@
                   <VBox prefHeight="308.0" prefWidth="231.0" spacing="20.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cereri trimise" />
-                        <Button mnemonicParsing="false" text="anulare cerere" />
-                        <TableView fx:id="tabelTrimise" prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="anulare" mnemonicParsing="false" onAction="#anulareRequest" text="anulare cerere" />
+                        <TableView fx:id="tabelTrimise" onMouseClicked="#updateButtons" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                   <VBox prefHeight="308.0" prefWidth="235.0" spacing="20.0">
@@ -28,11 +28,11 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cereri primite" />
                         <HBox spacing="20.0">
                            <children>
-                              <Button mnemonicParsing="false" text="accept" />
-                              <Button mnemonicParsing="false" text="blocare" />
+                              <Button fx:id="accept" mnemonicParsing="false" onAction="#acceptRequest" text="accept" />
+                              <Button fx:id="blocare" mnemonicParsing="false" onAction="#blockRequest" text="blocare" />
                            </children>
                         </HBox>
-                        <TableView fx:id="tabelPrimite" prefHeight="200.0" prefWidth="200.0" />
+                        <TableView fx:id="tabelPrimite" onMouseClicked="#updateButtons" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                </children>

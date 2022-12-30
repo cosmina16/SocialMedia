@@ -69,6 +69,7 @@ public class App extends Application {
         AbstractController ab  = fxmlLoader.getController();
         ab.setSf(servfr);
         ab.setSu(servu);
+        ab.myinitialize();
 
         if (scene == null)
             scene = new Scene(root);

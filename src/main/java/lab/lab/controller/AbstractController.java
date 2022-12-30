@@ -15,4 +15,7 @@ public abstract class AbstractController {
         this.sf = sf;
     }
 
+    public void myinitialize(){
+
+    }
 }

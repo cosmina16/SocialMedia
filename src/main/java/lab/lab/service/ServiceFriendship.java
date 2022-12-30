@@ -30,6 +30,7 @@ public class ServiceFriendship  {
                 friendshipRepoGeneric.update(fr.getId(),fr);
                 return;
             }
+        System.out.println("aici");
     }
 
     public void declineRequst(int receivingUser,int sendingUser){
